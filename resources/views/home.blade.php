@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div dir="rtl">
+@extends('master')
+@session('titel')
+    الرئيسية
+@endsession
+
+@section('content')
+<div style="background-size: cover;height: 550px;width: 90%;margin: 0 auto; background-image: url('{{ asset('admin/home.jpg') }}')" dir="rtl">
     
-        <h1 style="font: 100;background-color: blue;color: aliceblue">welcom to my bage</h1>
-    </div>
-</body>
-</html>
+   
+</div>
+@endsection
+  
+
