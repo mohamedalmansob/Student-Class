@@ -10,4 +10,4 @@ Route::get('/', function () {
 Route::get('home',function(){
     return View('home');
 
-});
+})->name('home');
