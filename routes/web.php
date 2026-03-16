@@ -1,13 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
-Route::get('/', function () {
-    return view('master');
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
 
-Route::get('home',function(){
-    return View('home');
 
-})->name('home');
