@@ -184,7 +184,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{ route('Corses.index') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>ضبط الكورسات </p>
                 </a>
@@ -229,7 +229,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row" style="padding-top: 50px">
 
        @yield('content')
 
