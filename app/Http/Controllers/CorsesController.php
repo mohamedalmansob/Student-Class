@@ -12,4 +12,7 @@ class CorsesController extends Controller
         $data=Corses::all();
         return View('Corses.index',['data'=>$data]);
     }
+    public function create(){
+        return View('Corses.create');
+    }
 }

@@ -7,7 +7,9 @@
     <div class="col-12" style="background-color: white;padding: 15px">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title" style="text-align: center;float: none;">بيانات الكورسات</h3>
+          <h3 class="card-title" style="text-align: center;float: none;">بيانات الكورسات
+         <a href="{{ route('Corses.Create') }}" class="btn btn:sm btn-info">اضافة جديد</a>
+          </h3>
 
     
         </div>
