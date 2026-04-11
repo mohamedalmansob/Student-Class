@@ -35,7 +35,7 @@
                 <th>العنوان </th>
                 <th> الهاتف</th>
                
-                <th> الصورة</th>
+                <th > الصورة</th>
                 <th>ملاحظة</th>
                 <th>حالة التفعيل</th>
                 <th>تاريخ الاضافة</th>
@@ -50,7 +50,7 @@
                 <td>{{ $info->country_name }}</td>
                 <td>{{ $info->address }}</td>
                 <td>{{ $info->phones }}</td>
-                <td></td>
+                <td style="height: 80px"><img src="{{ asset('uploade/pdo.png') }}" alt="" style="height: 100%;width: 100% "></td>
                 <td>{{ $info->notes }}</td>
                 
                 <td>@if ( $info->active==1)مفعل @else معطل@endif</td>
