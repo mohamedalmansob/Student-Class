@@ -50,15 +50,15 @@
                 <td>{{ $info->country_name }}</td>
                 <td>{{ $info->address }}</td>
                 <td>{{ $info->phones }}</td>
-                <td style="height: 80px"><img src="{{ asset('uploade/pdo.png') }}" alt="" style="height: 100%;width: 100% "></td>
+                <td style="height: 80px"><img src="{{ asset('uploade/'.$info->image) }}" alt="" style="height: 100%;width: 100% "></td>
                 <td>{{ $info->notes }}</td>
                 
                 <td>@if ( $info->active==1)مفعل @else معطل@endif</td>
                 <td>{{ $info->created_at }}</td>
                 <td>{{ $info->updated_at }}</td>
                 <td>
-                    <a href="{{ route('Corses.edit',$info->id) }}" class="button" style="background-color: green;padding: 10px;color: white">تعديل</a>
-                    <a href="{{ route('Corses.delete',$info->id) }}" class="button" style="background-color: rgb(212, 144, 179);padding: 10px;color: white">حذف</a>
+                    <a href="{{ route('Students.edit',$info->id) }}" class="button" style="background-color: green;padding: 10px;color: white">تعديل</a>
+                    <a href="{{ route('Students.delete',$info->id) }}" class="button" style="background-color: rgb(212, 144, 179);padding: 10px;color: white">حذف</a>
 
                 </td>
               </tr>

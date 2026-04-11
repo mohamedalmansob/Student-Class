@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\createstudentvalidationrequest;
 use App\Models\countries;
 use App\Models\Students;
 use Illuminate\Http\Request;
@@ -16,4 +18,62 @@ class StudentController extends Controller
         }
         return View('Students.index',['data'=>$data]);
     }
+    public function create(){
+        $countries=countries::select('id','name')->where('active',1)->get();
+        return View('Students.create',['countrise'=>$countries]);
+    }
+    public function store(createstudentvalidationrequest $request){
+        $counter=Students::where('name','=',$request->name)->count();
+        if($counter){
+            // الرجوع للخلف مع الاحتفاظ بالقيم المدخلة والانتقال مع الرسالة
+            return redirect()->back()->with(['error'=>'الاسم موجود بالفعل'])->withInput();
+        }
+        $student=new  Students();
+        $student->name=$request->name;
+        $student->country_id=$request->country_id;
+        $student->nutionalID=$request->nutionalID;
+        $student->phones=$request->phones;
+        $student->address=$request->address;
+        $student->notes=$request->notes;
+        if($request->has('photo')){
+            $image=$request->photo;
+            $extension=strtolower($image->extension());
+            $filename=time().rand(1,1000).'.'.$extension;
+            $image->getClientOriginalName=$filename;
+            $image->move('uploade',$filename);
+            $student->image=$filename;
+        }
+        $student->active=$request->active;
+        $student->save();
+        return redirect()->route('Students.index')->with(['success'=>'تمت الاضافة بنجاح']);
+    
+    
+        }
+        public function edit($id){
+            $data=Students::find($id);
+            if(empty($data)){
+                return redirect()->route('Students.index')->with(['error'=>'عفوا غير قادر للوصول للبيانات المطلوبة']);
+    
+            }
+            
+            return View('Students.edit',['data'=>$data]);
+    
+        }
+        public function update($id ,createstudentvalidationrequest $request){
+            $student=Students::find($id);
+            if(empty($student)){
+                return redirect()->route('Students.index')->with(['error'=>'عفوا غير قادر للوصول للبيانات المطلوبة']);
+    
+            }
+            $student['name']=$request->name;
+            $student['country_id']=$request->country_id;
+            $student['nutionalID']=$request->nutionalID;
+            $student['phones']=$request->phones;
+            $student['address']=$request->address;
+            $student['notes']=$request->notes;
+            $student['active']=$request->active;
+            $student->save();
+            return redirect()->route('Students.index')->with(['success'=>'تم التعديل بنجاح']);
+    
+        }
 }
