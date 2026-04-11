@@ -14,4 +14,4 @@ Route::post('Store_Corses',[CorsesController::class,'store'])->name('Corses.stor
 Route::get('Edit_Corses/{id}',[CorsesController::class,'edit'])->name('Corses.edit');
 Route::get('Corses',[CorsesController::class,'index'])->name('Corses.index');
 Route::post('‘Update_Corses/{id}',[CorsesController::class,'update'])->name('Corses.update');
-Route::get('Delete_Corses',[CorsesController::class,'delete'])->name('Corses.delete');
+Route::get('Delete_Corses/{id}',[CorsesController::class,'delete'])->name('Corses.delete');

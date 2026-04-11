@@ -54,4 +54,14 @@ class CorsesController extends Controller
         return redirect()->route('Corses.index')->with(['success'=>'تم التعديل بنجاح']);
 
     }
+    public function delete($id){
+        $dataCourse=Corses::find($id);
+        if(empty($dataCourse)){
+            return redirect()->route('Corses.index')->with(['error'=>'عفوا غير قادر للوصول للبيانات المطلوبة']);
+
+        }
+        $dataCourse->delete();
+        return redirect()->route('Corses.index')->with(['success'=>'تم الحذف بنجاح']);
+
+    }
 }
