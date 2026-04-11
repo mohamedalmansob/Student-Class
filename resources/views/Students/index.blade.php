@@ -1,14 +1,14 @@
 @extends('master')
 
 @section('titel')
-    الكورسات
+    بيانات الطلاب
 @endsection
 @section('content')
     <div class="col-12" style="background-color: white;padding: 15px">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title" style="text-align: center;float: none;">بيانات الكورسات
-         <a href="{{ route('Corses.Create') }}" class="btn btn:sm btn-info">اضافة جديد</a>
+          <h3 class="card-title" style="text-align: center;float: none;">بيانات الطلاب
+         <a href="{{ route('Students.Create') }}" class="btn btn:sm btn-info">اضافة جديد</a>
           </h3>
         @if (Session::has('success'))
         <div class="alert alert-success" role="alert">
@@ -30,16 +30,29 @@
             <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th>اسم الكورس</th>
+                <th>اسم الطالب</th>
+                <th> الدولة</th>
+                <th> الهاتف</th>
+                <th>العنوان </th>
+                <th> الصورة</th>
+                <th>ملاحظة</th>
                 <th>حالة التفعيل</th>
                 <th>تاريخ الاضافة</th>
                 <th>تاريخ التحديث</th>
+                <th>التحكم </th>
+
                 <th></th>
               </tr>
             </thead>
             <tbody>
                 @foreach ($data as $info)
               <tr>
+                <td>{{ $info->name }}</td>
+                <td>{{ $info->name }}</td>
+                <td>{{ $info->name }}</td>
+                <td>{{ $info->name }}</td>
+                <td>{{ $info->name }}</td>
+                <td>{{ $info->name }}</td>
                 <td>{{ $info->name }}</td>
                 <td>@if ( $info->active==1)مفعل @else معطل@endif</td>
                 <td>{{ $info->created_at }}</td>
