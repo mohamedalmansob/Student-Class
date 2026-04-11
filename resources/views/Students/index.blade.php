@@ -32,8 +32,9 @@
               <tr>
                 <th>اسم الطالب</th>
                 <th> الدولة</th>
-                <th> الهاتف</th>
                 <th>العنوان </th>
+                <th> الهاتف</th>
+               
                 <th> الصورة</th>
                 <th>ملاحظة</th>
                 <th>حالة التفعيل</th>
@@ -48,12 +49,12 @@
                 @foreach ($data as $info)
               <tr>
                 <td>{{ $info->name }}</td>
-                <td>{{ $info->name }}</td>
-                <td>{{ $info->name }}</td>
-                <td>{{ $info->name }}</td>
-                <td>{{ $info->name }}</td>
-                <td>{{ $info->name }}</td>
-                <td>{{ $info->name }}</td>
+                <td>{{ $info->country_name }}</td>
+                <td>{{ $info->address }}</td>
+                <td>{{ $info->phones }}</td>
+                <td></td>
+                <td>{{ $info->notes }}</td>
+                
                 <td>@if ( $info->active==1)مفعل @else معطل@endif</td>
                 <td>{{ $info->created_at }}</td>
                 <td>{{ $info->updated_at }}</td>
