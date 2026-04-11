@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('student', function (Blueprint $table) {
             $table->id();
+            $table->string('name',255);
+            $table->string('phond',100);
+            $table->string('address',255);
+            $table->string('image',255);
+            $table->tinyInteger('active')->default(1)->comment('هل الطالب مفعل او معطل');
+            $table->foreignId('country_id')->references('id')->on('countries')->onUpdate('cascade');
+
+
             $table->timestamps();
         });
     }
