@@ -10,7 +10,16 @@
           <h3 class="card-title" style="text-align: center;float: none;">بيانات الكورسات
          <a href="{{ route('Corses.Create') }}" class="btn btn:sm btn-info">اضافة جديد</a>
           </h3>
-
+        @if (Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('success') }}
+          </div>
+        @endif
+        @if (Session::has('error'))
+        <div class="alert alert-error" role="alert">
+            {{ Session::get('error') }}
+          </div>
+        @endif
     
         </div>
         <!-- /.card-header -->
@@ -37,7 +46,7 @@
                 <td>{{ $info->updated_at }}</td>
                 <td>
                     <a href="{{ route('Corses.edit',$info->id) }}" class="button" style="background-color: green;padding: 10px;color: white">تعديل</a>
-                    <a href="{{ route('Corses.store',$info->id) }}" class="button" style="background-color: rgb(212, 144, 179);padding: 10px;color: white">حذف</a>
+                    <a href="{{ route('Corses.delete',$info->id) }}" class="button" style="background-color: rgb(212, 144, 179);padding: 10px;color: white">حذف</a>
 
                 </td>
               </tr>

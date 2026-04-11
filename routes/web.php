@@ -11,5 +11,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('Corses',[CorsesController::class,'index'])->name('Corses.index');
 Route::get('Create_Corses',[CorsesController::class,'create'])->name('Corses.Create');
 Route::post('Store_Corses',[CorsesController::class,'store'])->name('Corses.store');
-Route::get('Edit_Corses',[CorsesController::class,'edit'])->name('Corses.edit');
+Route::get('Edit_Corses/{id}',[CorsesController::class,'edit'])->name('Corses.edit');
 Route::get('Corses',[CorsesController::class,'index'])->name('Corses.index');
+Route::post('‘Update_Corses/{id}',[CorsesController::class,'update'])->name('Corses.update');
+Route::get('Delete_Corses',[CorsesController::class,'delete'])->name('Corses.delete');

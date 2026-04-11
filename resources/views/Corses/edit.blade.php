@@ -1,6 +1,6 @@
 @extends('master')
 @section('titel')
-    اضافة كورس جديد
+    تعديل كورس جديد
 @endsection
 @section('content')
 <div class="col-md-12">
@@ -10,12 +10,12 @@
       {{ Session::get('error') }}
     </div>
   @endif
-<form method="POST" action="{{ route('Corses.store') }}" role="form" style="width: 80%;margin: 0 auto;background-color: white">
+<form method="POST" action="{{ route('Corses.update',$data['id']) }}" role="form" style="width: 80%;margin: 0 auto;background-color: white">
   @csrf
     <div class="card-body">
       <div class="form-group">
         <label for="exampleInputEmail1">اسم الكورس</label>
-        <input autofocus type="text" name="name" class="form-control" id="name" placeholder="Enter email" value="{{ old('name') }}">
+        <input autofocus type="text" name="name" class="form-control" id="name" placeholder="Enter email" value="{{ old('name',$data['name']) }}">
         @error('name')
            <span style="color: red">{{ $message }}</span> 
         @enderror
@@ -24,8 +24,8 @@
         <label for="">حالة التفعيل</label>
          <select name="active" id="active" name="active" class="form-control">
           <option value="">اختر الحالة</option>
-          <option value="1" @if (old('active')==1) selected @endif>مفعلة</option>
-          <option value="0"@if (old('active')==0 and old('active')!='') selected @endif>معطلة</option>
+          <option value="1" @if (old('active',$data['active'])==1) selected @endif>مفعلة</option>
+          <option value="0"@if (old('active',$data['active'])==0) selected @endif>معطلة</option>
          </select>
          @error('active')
          <span style="color: red">{{ $message }}</span> 
@@ -37,7 +37,7 @@
     <!-- /.card-body -->
 
     <div style="text-align: center" class="form-group">
-      <button type="submit" class="btn btn-primary">اضافة كورس</button>
+      <button type="submit" class="btn btn-primary">تحديث كورس</button>
     </div>
   </div>
   </form>
