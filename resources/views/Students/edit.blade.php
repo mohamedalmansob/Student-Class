@@ -28,7 +28,7 @@
           <option value="">اختر الدولة</option>
           @if (!@empty($countrise))
           @foreach ($countrise as $info)
-          <option value="{{ $info->id }}">{{ $info->name }}</option>
+          <option value="{{ $info->id }}" @if (old('country_id',$data['country_id']==$info->id)) selected @endif>{{ $info->name }}</option>
               
           @endforeach
               
@@ -64,6 +64,14 @@
         <input autofocus type="text" name="notes" class="form-control" id="notes"  value="{{ old('notes',$data['notes']) }}">
         
       </div>
+
+      <div class="form-group">
+        <label for="photo"> تغيير صورة الطالب</label>
+        {{-- <img src="{{ asset('uploade/'.$data['image']) }}" alt="" style="width: 90px;height: 90px;"> --}}
+        <input autofocus type="file" name="photo" class="form-control" id="photo"  value="{{ old('photo') }}" >
+        
+      </div>
+
       <div class="form-group">
         <label for="">حالة التفعيل</label>
          <select name="active" id="active" name="active" class="form-control">
@@ -81,7 +89,7 @@
     <!-- /.card-body -->
 
     <div style="text-align: center" class="form-group">
-      <button type="submit" class="btn btn-primary">تحديث طالب</button>
+      <button type="submit" class="btn btn-primary">تعديل طالب</button>
     </div>
   </div>
   </form>
