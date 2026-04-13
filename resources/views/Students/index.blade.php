@@ -10,11 +10,27 @@
           <h3 class="card-title" style="text-align: center;float: none;">بيانات الطلاب
          <a href="{{ route('Students.Create') }}" class="btn btn:sm btn-info">اضافة جديد</a>
           </h3>
-        @if (Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
+          @if (Session::has('success'))
+          <div class="alert alert-success" role="alert" id="success-alert">
+              {{ Session::get('success') }}
           </div>
-        @endif
+      @endif
+      
+      <script>
+          // عند تحميل الصفحة
+          window.onload = function() {
+              let alertBox = document.getElementById('success-alert');
+              if(alertBox){
+                  // بعد 3 ثواني يختفي تدريجيًا
+                  setTimeout(() => {
+                      alertBox.style.transition = "opacity 1s ease";
+                      alertBox.style.opacity = 0;
+                      setTimeout(() => alertBox.remove(), 1000); // يحذف العنصر بعد الاختفاء
+                  }, 3000); // 3000ms = 3 ثواني
+              }
+          }
+      </script>
+      
         @if (Session::has('error'))
         <div class="alert alert-error" role="alert">
             {{ Session::get('error') }}
@@ -56,11 +72,19 @@
                 <td>@if ( $info->active==1)مفعل @else معطل@endif</td>
                 <td>{{ $info->created_at }}</td>
                 <td>{{ $info->updated_at }}</td>
-                <td>
-                    <a href="{{ route('Students.edit',$info->id) }}" class="button" style="background-color: green;padding: 10px;color: white">تعديل</a>
-                    <a href="{{ route('Students.delete',$info->id) }}" class="button" style="background-color: rgb(212, 144, 179);padding: 10px;color: white">حذف</a>
-
-                </td>
+                <td style="display: flex; gap: 10px;">
+                  <a href="{{ route('Students.edit',$info->id) }}" 
+                     style="background-color: green; padding: 10px; color: white; text-decoration: none;">
+                     تعديل
+                  </a>
+                  <a href="{{ route('Students.delete',$info->id) }}" 
+                     style="background-color: rgb(212, 144, 179); padding: 10px; color: white; text-decoration: none;">
+                     حذف
+                  </a>
+              </td>
+              
+              
+              
               </tr>
               @endforeach
             </tbody>

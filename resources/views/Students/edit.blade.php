@@ -10,7 +10,7 @@
       {{ Session::get('error') }}
     </div>
   @endif
-<form method="POST" action="{{ route('Students.update',$data['id']) }}" role="form" style="width: 80%;margin: 0 auto;background-color: white">
+<form method="POST" enctype="multipart/form-data" method="POST" action="{{ route('Students.update',$data['id']) }}" role="form" style="width: 80%;margin: 0 auto;background-color: white">
   @csrf
     <div class="card-body">
       <div class="form-group">
